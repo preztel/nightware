@@ -112,7 +112,7 @@ GameLabel.BackgroundTransparency = 1.000
 GameLabel.Position = UDim2.new(0.0734006539, 0, 0.5, 0)
 GameLabel.Size = UDim2.new(0, 193, 0, 12)
 GameLabel.Font = Enum.Font.GothamSemibold
-GameLabel.Text = "Universal"
+GameLabel.Text = ""
 GameLabel.TextColor3 = Color3.fromRGB(138, 138, 138)
 GameLabel.TextSize = 11.000
 GameLabel.TextXAlignment = Enum.TextXAlignment.Left
@@ -172,6 +172,10 @@ UIPadding_3.Parent = Top
 UIPadding_3.PaddingLeft = UDim.new(0, 10) 
 
 local Library = {}
+
+function Library:SetGame(Name)
+	GameLabel.Text = Name
+end
 
 function Library:Loader(Text)
 	local ImageLabel = Instance.new("ImageLabel")
