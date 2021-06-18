@@ -173,11 +173,9 @@ UIPadding_3.PaddingLeft = UDim.new(0, 10)
 
 local Library = {}
 
-function Library:SetGame(Name)
-	GameLabel.Text = Name
-end
-
 function Library:Loader(Text)
+	GameLabel.Text = Text
+	
 	local ImageLabel = Instance.new("ImageLabel")
 	local TextLabel = Instance.new("TextLabel")
 
