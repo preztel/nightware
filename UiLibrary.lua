@@ -1,4 +1,4 @@
-local Location = getgenv().Location
+local Location = game.CoreGui
 
 local Camera = workspace.CurrentCamera
 
@@ -131,9 +131,6 @@ Frame.Position = UDim2.new(0, -2, 0, -1)
 Frame.Size = UDim2.new(0, 5, 0, 5)
 
 --[[
-
-
-
 Help.Name = "Help"
 Help.Parent = Toggle
 Help.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -143,11 +140,8 @@ Help.Font = Enum.Font.GothamSemibold
 Help.Text = "?"
 Help.TextColor3 = Color3.fromRGB(0, 0, 0)
 Help.TextSize = 11.000
-
 UICorner_7.CornerRadius = UDim.new(1, 0)
 UICorner_7.Parent = Help
-
-
 TanNonEnabled.Name = "TanNonEnabled"
 TanNonEnabled.Parent = Top
 TanNonEnabled.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -159,7 +153,6 @@ TanNonEnabled.Font = Enum.Font.GothamSemibold
 TanNonEnabled.Text = "Visuals"
 TanNonEnabled.TextColor3 = Color3.fromRGB(138, 138, 138)
 TanNonEnabled.TextSize = 10.000
-
 ]]
 
 Top.Name = "Top"
@@ -587,4 +580,5 @@ function Library:NewTab(Text)
 
 	return Inside
 end
+
 return Library
