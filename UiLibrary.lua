@@ -1,5 +1,7 @@
 local Location = game.CoreGui
 
+local Camera = workspace.CurrentCamera
+
 if Location:FindFirstChild("     ") then 
 	Location:FindFirstChild("     "):Destroy()
 end
@@ -31,6 +33,7 @@ local UICorner_7 = Instance.new("UICorner")
 local Top = Instance.new("Frame")
 local TopLister = Instance.new("UIListLayout")
 
+local TanNonEnabled = Instance.new("TextButton")
 local UIPadding_3 = Instance.new("UIPadding")
 
 local AimbotCheck = true
@@ -38,13 +41,14 @@ local AimbotCheck = true
 MainFrame.Name = "MainFrame"
 MainFrame.Parent = ScreenGui
 MainFrame.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
+MainFrame.BackgroundTransparency = 1
 MainFrame.BorderSizePixel = 0
 MainFrame.Position = UDim2.new(0.5, 0,0.5, 0)
 MainFrame.Size = UDim2.new(0, 483, 0, 417)
 MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
 MainFrame.Active = true
 MainFrame.Draggable = true
-MainFrame.ClipsDescendants = true
+MainFrame.Visible = false
 
 MainFrame.MouseEnter:Connect(function()
 	AimbotCheck = false
@@ -74,7 +78,6 @@ TopFrame.Parent = MainFrame
 TopFrame.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
 TopFrame.BorderSizePixel = 0
 TopFrame.Size = UDim2.new(0, 483, 0, 33)
-TopFrame.ZIndex = 1
 
 Title.Name = "Title"
 Title.Parent = TopFrame
@@ -98,17 +101,6 @@ SquareButton.Font = Enum.Font.SourceSans
 SquareButton.Text = ""
 SquareButton.TextColor3 = Color3.fromRGB(0, 0, 0)
 SquareButton.TextSize = 14.000
-local MainOpen = false
-SquareButton.MouseButton1Click:Connect(function()
-	MainOpen = not MainOpen
-	if MainOpen then
-		game:GetService("TweenService"):Create(MainFrame, TweenInfo.new(0.2), {Size = UDim2.new(0, 483, 0, 33)}):Play()
-		Top.Visible = false
-	else
-		game:GetService("TweenService"):Create(MainFrame, TweenInfo.new(0.2), {Size = UDim2.new(0, 483, 0, 417)}):Play()
-		Top.Visible = true
-	end
-end)
 
 UICorner.CornerRadius = UDim.new(0, 4)
 UICorner.Parent = SquareButton
@@ -137,7 +129,6 @@ Frame.Parent = Notifications
 Frame.BackgroundColor3 = Color3.fromRGB(255, 94, 94)
 Frame.Position = UDim2.new(0, -2, 0, -1)
 Frame.Size = UDim2.new(0, 5, 0, 5)
-Frame.Visible = false
 
 --[[
 
@@ -189,6 +180,59 @@ UIPadding_3.PaddingLeft = UDim.new(0, 10)
 
 local Library = {}
 
+function Library:Loader(Text)
+	local ImageLabel = Instance.new("ImageLabel")
+	local TextLabel = Instance.new("TextLabel")
+
+    ImageLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+	ImageLabel.Parent = ScreenGui
+	ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	ImageLabel.Position = UDim2.new(0.5, 0, 0.5, 0)
+	ImageLabel.Size = UDim2.new(0, 306, 0, 249)
+	ImageLabel.Image = "http://www.roblox.com/asset/?id=5531272999"
+	ImageLabel.ScaleType = Enum.ScaleType.Slice
+	ImageLabel.SliceCenter = Rect.new(250, 250, 250, 250)
+	ImageLabel.BackgroundTransparency = 1
+	ImageLabel.ImageTransparency = 1
+	
+	game:GetService("TweenService"):Create(ImageLabel, TweenInfo.new(0.2), {ImageTransparency = 0}):Play()
+
+	TextLabel.Parent = ImageLabel
+	TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel.BackgroundTransparency = 1.000
+	TextLabel.Position = UDim2.new(0.173202619, 0, 0.642570257, 0)
+	TextLabel.Size = UDim2.new(0, 200, 0, 63)
+	TextLabel.Font = Enum.Font.Code
+	TextLabel.Text = Text
+	TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel.TextSize = 17.000
+	
+	local Inside = {}
+	
+	function Inside:SetText(Value)
+		TextLabel.Text = Value
+	end
+	
+	function Inside:Toggle(Value)
+		if Value then
+			game:GetService("TweenService"):Create(TextLabel, TweenInfo.new(0.2), {TextTransparency = 1}):Play()
+			wait(0.3)
+			TextLabel.Text = "Finished Loading!"
+			game:GetService("TweenService"):Create(TextLabel, TweenInfo.new(0.2), {TextTransparency = 0}):Play()
+			wait(1)
+			game:GetService("TweenService"):Create(TextLabel, TweenInfo.new(0.2), {TextTransparency = 1}):Play()
+			wait(0.7)
+			game:GetService("TweenService"):Create(ImageLabel, TweenInfo.new(0.6), {ImageTransparency = 1}):Play()
+			wait(1)
+			ImageLabel:Destroy()
+			MainFrame.Visible = true
+			game:GetService("TweenService"):Create(MainFrame, TweenInfo.new(0.6), {BackgroundTransparency = 0}):Play()
+		end
+	end
+	
+	return Inside
+end
+
 function Library:NewTab(Text)
 	Text = Text or ""
 
@@ -221,7 +265,7 @@ function Library:NewTab(Text)
 	Container.BorderSizePixel = 0
 	Container.Position = UDim2.new(0, 0, 0.12230216, 0)
 	Container.Size = UDim2.new(0, 483, 0, 366)
-	Container.Visible = true
+	Container.Visible = false
 
 	Left.Name = "Left"
 	Left.Parent = Container
@@ -543,4 +587,4 @@ function Library:NewTab(Text)
 
 	return Inside
 end
-return Library
+retrun Library
