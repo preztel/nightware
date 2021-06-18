@@ -587,4 +587,4 @@ function Library:NewTab(Text)
 
 	return Inside
 end
-retrun Library
+return Library
