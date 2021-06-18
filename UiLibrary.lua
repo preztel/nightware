@@ -1,4 +1,4 @@
-local Location = game.CoreGui
+local Location = getgenv().Location
 
 local Camera = workspace.CurrentCamera
 
