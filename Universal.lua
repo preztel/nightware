@@ -124,7 +124,7 @@ function Names(Player)
 				local Character = GetCharacter(Player)	
 				if Character and Character:FindFirstChild("HumanoidRootPart") and Character:FindFirstChild("Head") then
 					if Player.Team ~= LocalPlayer.Team then
-						NameText.Color = Color3.fromRGB(127, 94, 235)
+						NameText.Color = Color3.fromRGB(186, 0, 0)
 					else
 						NameText.Color = Color3.fromRGB(235, 235, 235)
 					end
