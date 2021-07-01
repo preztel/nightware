@@ -93,7 +93,7 @@ Title.TextXAlignment = Enum.TextXAlignment.Left
 
 SquareButton.Name = "SquareButton"
 SquareButton.Parent = TopFrame
-SquareButton.BackgroundColor3 = Color3.fromRGB(51, 129, 255)
+SquareButton.BackgroundColor3 = Color3.fromRGB(186, 0, 0)
 SquareButton.Position = UDim2.new(0.0227743275, 0, 0.233333349, 0)
 SquareButton.Size = UDim2.new(0, 17, 0, 17)
 SquareButton.AutoButtonColor = false
@@ -392,7 +392,7 @@ function Library:NewTab(Text)
 
 		Frame_3.Parent = Frame_2
 		Frame_3.AnchorPoint = Vector2.new(0.5, 0.5)
-		Frame_3.BackgroundColor3 = Color3.fromRGB(51, 129, 255)
+		Frame_3.BackgroundColor3 = Color3.fromRGB(186, 0, 0)
 		Frame_3.BorderSizePixel = 0
 		Frame_3.Position = UDim2.new(0.5, 0, 0.5, 0)
 		Frame_3.Size = UDim2.new(0, 11, 0, 11)
@@ -449,7 +449,7 @@ function Library:NewTab(Text)
 		UICorner_8.Parent = Slider
 
 		Frame_4.Parent = Slider
-		Frame_4.BackgroundColor3 = Color3.fromRGB(51, 129, 255)
+		Frame_4.BackgroundColor3 = Color3.fromRGB(186, 0, 0)
 		Frame_4.BackgroundTransparency = 0.700
 		Frame_4.BorderSizePixel = 0
 		Frame_4.Position = UDim2.new(0, 0, 0, 0)
