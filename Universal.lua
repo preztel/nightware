@@ -20,12 +20,13 @@ local ESP = {
 	Radius = 100,
 	Snaplines = false,
 	Boxes = false,
-	BoxesOutlines = true,
 	Chams = false,
 	Names = false,
 	Health = false,
 	Distance = false,
-	Items = false
+	Items = false,
+	TeamCheck = false,
+	ColorBasedOnTeam = false
 }
 
 --< Local Variables.
@@ -174,9 +175,8 @@ function Boxes(Player)
 				local Character = GetCharacter(Player)	
 				local Corners = GetCorners(Player)
 
-				if Character and Character:FindFirstChild("HumanoidRootPart") and Character:FindFirstChild("Head") then
-
-					if Player.Team ~= LocalPlayer.Team then
+				if Character and Character:FindFirstChild("HumanoidRootPart") and Character:FindFirstChild("Head") and (ESP.TeamCheck and Player.Team ~= LocalPlayer.Team) then
+					if ESP.ColorBasedOnTeam and Player.Team ~= LocalPlayer.Team then
 						Box.Color = Color3.fromRGB(127, 94, 235)
 					else
 						Box.Color = Color3.fromRGB(235, 235, 235)
@@ -195,15 +195,11 @@ function Boxes(Player)
 					Box.Thickness = 1
 					Box.Filled = false
 
-					if ESP.BoxesOutlines then
-						BoxOutline.Visible = true
-						BoxOutline.Size = Vector2.new(Corners.BottomRight.X - Corners.TopLeft.X, Corners.BottomRight.Y - Corners.TopLeft.Y)
-						BoxOutline.Position = Corners.TopLeft
-						BoxOutline.Thickness = (Box.Thickness * 2.5)
-						BoxOutline.Filled = false
-					else
-						BoxOutline.Visible = false
-					end
+					BoxOutline.Visible = true
+					BoxOutline.Size = Vector2.new(Corners.BottomRight.X - Corners.TopLeft.X, Corners.BottomRight.Y - Corners.TopLeft.Y)
+					BoxOutline.Position = Corners.TopLeft
+					BoxOutline.Thickness = (Box.Thickness * 2.5)
+					BoxOutline.Filled = false
 				else
 					Box.Visible = false
 					BoxOutline.Visible = false
@@ -239,7 +235,7 @@ function Names(Player)
 	NameText.Font = Drawing.Fonts.Plex
 	NameText.Outline = true
 	NameText.OutlineColor = Color3.new(0,0,0)
-	
+
 	HealthText.Center = true
 	HealthText.Size = 12
 	HealthText.Font = Drawing.Fonts.Plex
@@ -252,7 +248,8 @@ function Names(Player)
 			if Player then 
 				local Character = GetCharacter(Player)	
 				if Character and Character:FindFirstChild("HumanoidRootPart") and Character:FindFirstChild("Head") then
-					if Player.Team ~= LocalPlayer.Team then
+
+					if ESP.ColorBasedOnTeam and Player.Team ~= LocalPlayer.Team then
 						NameText.Color = Color3.fromRGB(127, 94, 235)
 					else
 						NameText.Color = Color3.fromRGB(235, 235, 235)
@@ -368,5 +365,3 @@ Players.PlayerAdded:Connect(function(v)
 	Names(v)
 	Boxes(v)
 end)
-
-return Aimbot, ESP, FOV	;
