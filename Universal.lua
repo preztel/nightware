@@ -230,12 +230,11 @@ function Names(Player)
 	local NameText = Drawing.new("Text")
 	local HealthText = Drawing.new("Text")
 	NameText.Center = true
-	NameText.Text = "Player"
-	--[[if string.len(Player.Name) < 10 then
+	if string.len(Player.Name) < 10 then
 		NameText.Text = (Player.Name)
 	else
 		NameText.Text = (string.sub(Player.Name, 1, 8) .. "..")
-	end]]
+	end
 	NameText.Size = 12.7
 	NameText.Font = Drawing.Fonts.Plex
 	NameText.Outline = true
