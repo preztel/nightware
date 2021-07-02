@@ -19,11 +19,11 @@ local ESP = {
 	Circle = false,
 	Radius = 100,
 	Snaplines = false,
-	Boxes = true,
+	Boxes = false,
 	BoxesOutlines = true,
 	Chams = false,
-	Names = true,
-	Health = true,
+	Names = false,
+	Health = false,
 	Distance = false,
 	Items = false
 }
