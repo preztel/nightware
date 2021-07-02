@@ -175,11 +175,11 @@ local Library = {}
 
 function Library:Loader(Text)
 	GameLabel.Text = Text
-	
+
 	local ImageLabel = Instance.new("ImageLabel")
 	local TextLabel = Instance.new("TextLabel")
 
-    ImageLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+	ImageLabel.AnchorPoint = Vector2.new(0.5, 0.5)
 	ImageLabel.Parent = ScreenGui
 	ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	ImageLabel.Position = UDim2.new(0.5, 0, 0.5, 0)
@@ -189,7 +189,7 @@ function Library:Loader(Text)
 	ImageLabel.SliceCenter = Rect.new(250, 250, 250, 250)
 	ImageLabel.BackgroundTransparency = 1
 	ImageLabel.ImageTransparency = 1
-	
+
 	game:GetService("TweenService"):Create(ImageLabel, TweenInfo.new(0.2), {ImageTransparency = 0}):Play()
 
 	TextLabel.Parent = ImageLabel
@@ -201,13 +201,13 @@ function Library:Loader(Text)
 	TextLabel.Text = Text
 	TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 	TextLabel.TextSize = 17.000
-	
+
 	local Inside = {}
-	
+
 	function Inside:SetText(Value)
 		TextLabel.Text = Value
 	end
-	
+
 	function Inside:Toggle(Value)
 		if Value then
 			game:GetService("TweenService"):Create(TextLabel, TweenInfo.new(0.2), {TextTransparency = 1}):Play()
@@ -224,7 +224,7 @@ function Library:Loader(Text)
 			game:GetService("TweenService"):Create(MainFrame, TweenInfo.new(0.6), {BackgroundTransparency = 0}):Play()
 		end
 	end
-	
+
 	return Inside
 end
 
@@ -577,10 +577,286 @@ function Library:NewTab(Text)
 				game:GetService("TweenService"):Create(Dropdown, TweenInfo.new(0.2), {Size = UDim2.new(0, 200, 0, 20)}):Play()
 			end
 		end)
+	end
+	
+	function Inside:CreateESPPreview()
+		Right:FindFirstChildOfClass("UIPadding"):Destroy()
+		Right:FindFirstChildOfClass("UIListLayout"):Destroy()
+		
+		local Preview = Instance.new("ImageLabel")
+		local CoverupHealth = Instance.new("Frame")
+		local CoverupName = Instance.new("Frame")
+		local CoverupBox = Instance.new("Frame")
 
+		Preview.Name = "Preview"
+		Preview.Parent = Right
+		Preview.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Preview.BackgroundTransparency = 1.000
+		Preview.BorderSizePixel = 0
+		Preview.Position = UDim2.new(0.187224671, 0, 0.0370370373, 0)
+		Preview.Size = UDim2.new(0, 142, 0, 293)
+		Preview.Image = "rbxassetid://7036672328"
+		Preview.ScaleType = Enum.ScaleType.Slice
+		Preview.SliceCenter = Rect.new(255, 255, 255, 255)
+
+		CoverupHealth.Name = "CoverupHealth"
+		CoverupHealth.Parent = Preview
+		CoverupHealth.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
+		CoverupHealth.BackgroundTransparency = 0.1
+		CoverupHealth.BorderSizePixel = 0
+		CoverupHealth.Position = UDim2.new(0.112676054, 0, 0.00103384804, 0)
+		CoverupHealth.Size = UDim2.new(0, 100, 0, 23)
+
+		CoverupName.Name = "CoverupName"
+		CoverupName.Parent = Preview
+		CoverupName.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
+		CoverupName.BackgroundTransparency = 0.1
+		CoverupName.BorderSizePixel = 0
+		CoverupName.Position = UDim2.new(0.112676054, 0, 0.0692932382, 0)
+		CoverupName.Size = UDim2.new(0, 100, 0, 23)
+
+		CoverupBox.Name = "CoverupBox"
+		CoverupBox.Parent = Preview
+		CoverupBox.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
+		CoverupBox.BackgroundTransparency = 0.1
+		CoverupBox.BorderSizePixel = 0
+		CoverupBox.Position = UDim2.new(0.049, 0,0.134, 0)
+		CoverupBox.Size = UDim2.new(0, 127, 0, 250)
+		
+		local InsidePreview = {}
+		
+		function InsidePreview:Boxes(State, Callback)
+			local Boxes = Instance.new("TextButton")
+			local UICorner = Instance.new("UICorner")
+			local Frame = Instance.new("Frame")
+			local UICorner_2 = Instance.new("UICorner")
+			local Frame_2 = Instance.new("Frame")
+			local UICorner_3 = Instance.new("UICorner")
+			
+			Boxes.Name = "Boxes"
+			Boxes.Parent = Right
+			Boxes.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+			Boxes.BackgroundTransparency = 1.000
+			Boxes.BorderColor3 = Color3.fromRGB(34, 34, 34)
+			Boxes.BorderSizePixel = 0
+			Boxes.Position = UDim2.new(0.048594743, 0, 0.894678116, 0)
+			Boxes.Size = UDim2.new(0, 63, 0, 20)
+			Boxes.AutoButtonColor = false
+			Boxes.Font = Enum.Font.Gotham
+			Boxes.Text = "         Boxes"
+			Boxes.TextColor3 = Color3.fromRGB(255, 255, 255)
+			Boxes.TextSize = 12.000
+			Boxes.TextXAlignment = Enum.TextXAlignment.Left
+
+			UICorner.CornerRadius = UDim.new(0, 3)
+			UICorner.Parent = Boxes
+
+			Frame.Parent = Boxes
+			Frame.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
+			Frame.BorderSizePixel = 0
+			Frame.Position = UDim2.new(0, 7, 0.159999996, 0)
+			Frame.Size = UDim2.new(0, 13, 0, 13)
+
+			UICorner_2.CornerRadius = UDim.new(0, 3)
+			UICorner_2.Parent = Frame
+
+			Frame_2.Parent = Frame
+			Frame_2.AnchorPoint = Vector2.new(0.5, 0.5)
+			Frame_2.BackgroundColor3 = Color3.fromRGB(186, 0, 0)
+			Frame_2.BorderSizePixel = 0
+			Frame_2.Position = UDim2.new(0.5, 0, 0.5, 0)
+			Frame_2.Size = UDim2.new(0, 11, 0, 11)
+			Frame_2.BackgroundTransparency = 0.8
+
+			UICorner_3.CornerRadius = UDim.new(0, 3)
+			UICorner_3.Parent = Frame_2
+			
+			if State then
+				Frame_2.BackgroundTransparency = 0
+			else
+				Frame_2.BackgroundTransparency = 1
+			end
+
+			local Toggled = State
+
+			Boxes.MouseButton1Click:Connect(function()
+				Toggled = not Toggled
+				if Toggled then
+					game:GetService("TweenService"):Create(Frame_2, TweenInfo.new(0.1), {BackgroundTransparency = 0}):Play()
+					game:GetService("TweenService"):Create(CoverupBox, TweenInfo.new(0.1), {BackgroundTransparency = 1}):Play()
+				else
+					game:GetService("TweenService"):Create(Frame_2, TweenInfo.new(0.1), {BackgroundTransparency = 0.8}):Play()
+					game:GetService("TweenService"):Create(CoverupBox, TweenInfo.new(0.1), {BackgroundTransparency = 0.1}):Play()
+				end
+				Callback(Toggled)
+			end)
+		end
+		function InsidePreview:Names(State, Callback)
+			local Names = Instance.new("TextButton")
+			local UICorner_4 = Instance.new("UICorner")
+			local Frame_3 = Instance.new("Frame")
+			local UICorner_5 = Instance.new("UICorner")
+			local Frame_4 = Instance.new("Frame")
+			local UICorner_6 = Instance.new("UICorner")
+			
+			Names.Name = "Names"
+			Names.Parent = Right
+			Names.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+			Names.BackgroundTransparency = 1.000
+			Names.BorderColor3 = Color3.fromRGB(34, 34, 34)
+			Names.BorderSizePixel = 0
+			Names.Position = UDim2.new(0.326101452, 0, 0.895042896, 0)
+			Names.Size = UDim2.new(0, 69, 0, 20)
+			Names.AutoButtonColor = false
+			Names.Font = Enum.Font.Gotham
+			Names.Text = "         Names"
+			Names.TextColor3 = Color3.fromRGB(255, 255, 255)
+			Names.TextSize = 12.000
+			Names.TextXAlignment = Enum.TextXAlignment.Left
+
+			UICorner_4.CornerRadius = UDim.new(0, 3)
+			UICorner_4.Parent = Names
+
+			Frame_3.Parent = Names
+			Frame_3.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
+			Frame_3.BorderSizePixel = 0
+			Frame_3.Position = UDim2.new(0, 7, 0.159999996, 0)
+			Frame_3.Size = UDim2.new(0, 13, 0, 13)
+
+			UICorner_5.CornerRadius = UDim.new(0, 3)
+			UICorner_5.Parent = Frame_3
+
+			Frame_4.Parent = Frame_3
+			Frame_4.AnchorPoint = Vector2.new(0.5, 0.5)
+			Frame_4.BackgroundColor3 = Color3.fromRGB(186, 0, 0)
+			Frame_4.BorderSizePixel = 0
+			Frame_4.Position = UDim2.new(0.5, 0, 0.5, 0)
+			Frame_4.Size = UDim2.new(0, 11, 0, 11)
+			Frame_4.BackgroundTransparency = 0.8
+
+			UICorner_6.CornerRadius = UDim.new(0, 3)
+			UICorner_6.Parent = Frame_4
+			
+			if State then
+				Frame_4.BackgroundTransparency = 0
+			else
+				Frame_4.BackgroundTransparency = 1
+			end
+
+			local Toggled = State
+
+			Names.MouseButton1Click:Connect(function()
+				Toggled = not Toggled
+				if Toggled then
+					game:GetService("TweenService"):Create(Frame_4, TweenInfo.new(0.1), {BackgroundTransparency = 0}):Play()
+					game:GetService("TweenService"):Create(CoverupName, TweenInfo.new(0.1), {BackgroundTransparency = 1}):Play()
+				else
+					game:GetService("TweenService"):Create(Frame_4, TweenInfo.new(0.1), {BackgroundTransparency = 0.8}):Play()
+					game:GetService("TweenService"):Create(CoverupName, TweenInfo.new(0.1), {BackgroundTransparency = 0.1}):Play()
+				end
+				Callback(Toggled)
+			end)
+		end
+		function InsidePreview:Health(State, Callback)
+			local Health = Instance.new("TextButton")
+			local UICorner_7 = Instance.new("UICorner")
+			local Frame_5 = Instance.new("Frame")
+			local UICorner_8 = Instance.new("UICorner")
+			local Frame_6 = Instance.new("Frame")
+			local UICorner_9 = Instance.new("UICorner")
+			
+			Health.Name = "Health"
+			Health.Parent = Right
+			Health.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+			Health.BackgroundTransparency = 1.000
+			Health.BorderColor3 = Color3.fromRGB(34, 34, 34)
+			Health.BorderSizePixel = 0
+			Health.Position = UDim2.new(0.630066216, 0, 0.895042896, 0)
+			Health.Size = UDim2.new(0, 71, 0, 20)
+			Health.AutoButtonColor = false
+			Health.Font = Enum.Font.Gotham
+			Health.Text = "         Health"
+			Health.TextColor3 = Color3.fromRGB(255, 255, 255)
+			Health.TextSize = 12.000
+			Health.TextXAlignment = Enum.TextXAlignment.Left
+
+			UICorner_7.CornerRadius = UDim.new(0, 3)
+			UICorner_7.Parent = Health
+
+			Frame_5.Parent = Health
+			Frame_5.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
+			Frame_5.BorderSizePixel = 0
+			Frame_5.Position = UDim2.new(0, 7, 0.159999996, 0)
+			Frame_5.Size = UDim2.new(0, 13, 0, 13)
+
+			UICorner_8.CornerRadius = UDim.new(0, 3)
+			UICorner_8.Parent = Frame_5
+
+			Frame_6.Parent = Frame_5
+			Frame_6.AnchorPoint = Vector2.new(0.5, 0.5)
+			Frame_6.BackgroundColor3 = Color3.fromRGB(186, 0, 0)
+			Frame_6.BorderSizePixel = 0
+			Frame_6.Position = UDim2.new(0.5, 0, 0.5, 0)
+			Frame_6.Size = UDim2.new(0, 11, 0, 11)
+			Frame_6.BackgroundTransparency = 0.8
+
+			UICorner_9.CornerRadius = UDim.new(0, 3)
+			UICorner_9.Parent = Frame_6
+			
+			if State then
+				Frame_6.BackgroundTransparency = 0
+			else
+				Frame_6.BackgroundTransparency = 1
+			end
+
+			local Toggled = State
+
+			Health.MouseButton1Click:Connect(function()
+				Toggled = not Toggled
+				if Toggled then
+					game:GetService("TweenService"):Create(Frame_6, TweenInfo.new(0.1), {BackgroundTransparency = 0}):Play()
+					game:GetService("TweenService"):Create(CoverupHealth, TweenInfo.new(0.1), {BackgroundTransparency = 1}):Play()
+				else
+					game:GetService("TweenService"):Create(Frame_6, TweenInfo.new(0.1), {BackgroundTransparency = 0.8}):Play()
+					game:GetService("TweenService"):Create(CoverupHealth, TweenInfo.new(0.1), {BackgroundTransparency = 0.1}):Play()
+				end
+				Callback(Toggled)
+			end)
+		end
+		
+		return InsidePreview
 	end
 
 	return Inside
 end
 
 return Library
+
+--[[local Loader = Library:Loader("Bad Buisness")  --< The Library Description will be the same as the quoted text here.
+Loader:Toggle(false)
+Loader:SetText("Loading Features.")
+
+local Tabs = { --< All the Tabs you want to add.
+	aimbot = Library:NewTab("Aimbot"),
+	visuals = Library:NewTab("Visuals")
+}
+
+Loader:SetText("Loading Tables.")
+
+local Aimbot, ESP, FOV = loadstring(game:HttpGet("https://raw.githubusercontent.com/preztel/nightware/main/Universal.lua", true))()
+
+local Preview = Tabs.visuals:CreateESPPreview()
+
+Preview:Boxes(false, function(a1)
+	ESP.Boxes = a1
+end)
+Preview:Names(false, function(a1)
+	ESP.Names = a1
+end)
+Preview:Health(false, function(a1)
+	ESP.Health = a1
+end)
+
+Loader:SetText("Loading Envoirments.")
+
+Loader:Toggle(true)]]
