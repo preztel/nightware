@@ -578,18 +578,18 @@ function Library:NewTab(Text)
 			end
 		end)
 	end
-	
+
 	function Inside:CreateESPPreview()
-		Right:FindFirstChildOfClass("UIPadding"):Destroy()
-		Right:FindFirstChildOfClass("UIListLayout"):Destroy()
-		
+		Left:FindFirstChildOfClass("UIPadding"):Destroy()
+		Left:FindFirstChildOfClass("UIListLayout"):Destroy()
+
 		local Preview = Instance.new("ImageLabel")
 		local CoverupHealth = Instance.new("Frame")
 		local CoverupName = Instance.new("Frame")
 		local CoverupBox = Instance.new("Frame")
 
 		Preview.Name = "Preview"
-		Preview.Parent = Right
+		Preview.Parent = Left
 		Preview.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Preview.BackgroundTransparency = 1.000
 		Preview.BorderSizePixel = 0
@@ -622,9 +622,9 @@ function Library:NewTab(Text)
 		CoverupBox.BorderSizePixel = 0
 		CoverupBox.Position = UDim2.new(0.049, 0,0.134, 0)
 		CoverupBox.Size = UDim2.new(0, 127, 0, 250)
-		
+
 		local InsidePreview = {}
-		
+
 		function InsidePreview:Boxes(State, Callback)
 			local Boxes = Instance.new("TextButton")
 			local UICorner = Instance.new("UICorner")
@@ -632,9 +632,9 @@ function Library:NewTab(Text)
 			local UICorner_2 = Instance.new("UICorner")
 			local Frame_2 = Instance.new("Frame")
 			local UICorner_3 = Instance.new("UICorner")
-			
+
 			Boxes.Name = "Boxes"
-			Boxes.Parent = Right
+			Boxes.Parent = Left
 			Boxes.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
 			Boxes.BackgroundTransparency = 1.000
 			Boxes.BorderColor3 = Color3.fromRGB(34, 34, 34)
@@ -670,7 +670,7 @@ function Library:NewTab(Text)
 
 			UICorner_3.CornerRadius = UDim.new(0, 3)
 			UICorner_3.Parent = Frame_2
-			
+
 			if State then
 				Frame_2.BackgroundTransparency = 0
 			else
@@ -698,9 +698,9 @@ function Library:NewTab(Text)
 			local UICorner_5 = Instance.new("UICorner")
 			local Frame_4 = Instance.new("Frame")
 			local UICorner_6 = Instance.new("UICorner")
-			
+
 			Names.Name = "Names"
-			Names.Parent = Right
+			Names.Parent = Left
 			Names.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
 			Names.BackgroundTransparency = 1.000
 			Names.BorderColor3 = Color3.fromRGB(34, 34, 34)
@@ -736,7 +736,7 @@ function Library:NewTab(Text)
 
 			UICorner_6.CornerRadius = UDim.new(0, 3)
 			UICorner_6.Parent = Frame_4
-			
+
 			if State then
 				Frame_4.BackgroundTransparency = 0
 			else
@@ -764,9 +764,9 @@ function Library:NewTab(Text)
 			local UICorner_8 = Instance.new("UICorner")
 			local Frame_6 = Instance.new("Frame")
 			local UICorner_9 = Instance.new("UICorner")
-			
+
 			Health.Name = "Health"
-			Health.Parent = Right
+			Health.Parent = Left
 			Health.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
 			Health.BackgroundTransparency = 1.000
 			Health.BorderColor3 = Color3.fromRGB(34, 34, 34)
@@ -802,7 +802,7 @@ function Library:NewTab(Text)
 
 			UICorner_9.CornerRadius = UDim.new(0, 3)
 			UICorner_9.Parent = Frame_6
-			
+
 			if State then
 				Frame_6.BackgroundTransparency = 0
 			else
@@ -823,7 +823,7 @@ function Library:NewTab(Text)
 				Callback(Toggled)
 			end)
 		end
-		
+
 		return InsidePreview
 	end
 
@@ -831,32 +831,3 @@ function Library:NewTab(Text)
 end
 
 return Library
-
---[[local Loader = Library:Loader("Bad Buisness")  --< The Library Description will be the same as the quoted text here.
-Loader:Toggle(false)
-Loader:SetText("Loading Features.")
-
-local Tabs = { --< All the Tabs you want to add.
-	aimbot = Library:NewTab("Aimbot"),
-	visuals = Library:NewTab("Visuals")
-}
-
-Loader:SetText("Loading Tables.")
-
-local Aimbot, ESP, FOV = loadstring(game:HttpGet("https://raw.githubusercontent.com/preztel/nightware/main/Universal.lua", true))()
-
-local Preview = Tabs.visuals:CreateESPPreview()
-
-Preview:Boxes(false, function(a1)
-	ESP.Boxes = a1
-end)
-Preview:Names(false, function(a1)
-	ESP.Names = a1
-end)
-Preview:Health(false, function(a1)
-	ESP.Health = a1
-end)
-
-Loader:SetText("Loading Envoirments.")
-
-Loader:Toggle(true)]]
