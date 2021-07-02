@@ -176,7 +176,6 @@ function Boxes(Player)
 				local Corners = GetCorners(Player)
 
 				if Character and Character:FindFirstChild("HumanoidRootPart") and Character:FindFirstChild("Head") then
-					print("test")
 					if ESP.ColorBasedOnTeam and Player.Team ~= LocalPlayer.Team then
 						Box.Color = Color3.fromRGB(127, 94, 235)
 					else
