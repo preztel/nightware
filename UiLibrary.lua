@@ -1,4 +1,4 @@
-local Location = game.Players.LocalPlayer.PlayerGui
+local Location = game.CoreGui
 
 local Camera = workspace.CurrentCamera
 
@@ -903,3 +903,4 @@ function Library:NewTab(Text)
 
 	return Inside
 end
+return Library
