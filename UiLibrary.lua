@@ -1,4 +1,4 @@
-local Location = game.CoreGui
+local Location = game.Players.LocalPlayer.PlayerGui
 
 local Camera = workspace.CurrentCamera
 
@@ -312,18 +312,18 @@ function Library:NewTab(Text)
 			print(TabEnabled.Text .. " : Now Visible")
 		end
 	end]]
-
+	
 	function Inside:NewSection(Text)
 		local FinalSize = 18
-
+		
 		local Section = Instance.new("Frame")
 		local UIListLayout = Instance.new("UIListLayout")
 		local UIPadding = Instance.new("UIPadding")
-
+		
 		Section.Name = "Section"
 		Section.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
 		Section.BorderSizePixel = 0
-
+		
 		local Label = Instance.new"TextLabel"
 		local Features = Instance.new"Frame"
 		local TextBounds = game:GetService("TextService"):GetTextSize(Text, 11, Enum.Font.Gotham, Vector2.new(math.huge, math.huge))
@@ -341,7 +341,7 @@ function Library:NewTab(Text)
 		Label.TextXAlignment = Enum.TextXAlignment.Left
 		Label.ZIndex = 2
 		Label.Size = UDim2.new(0, TextBounds.X, 0, 1)
-
+		
 		MakeOverFrame.BackgroundColor3 = Color3.fromRGB(167, 18, 20)
 		MakeOverFrame.Size = UDim2.new(0, 220, 0, 1)
 		MakeOverFrame.Position = UDim2.new(0, 0, 0, 0)
@@ -360,14 +360,14 @@ function Library:NewTab(Text)
 
 		UIPadding.Parent = Features
 		UIPadding.PaddingTop = UDim.new(0, 12)
-
+		
 		local Parent = Left
 		if Parent.UIListLayout.AbsoluteContentSize.Y > Right.UIListLayout.AbsoluteContentSize.Y then
 			Parent = Right
 		end
-
+		
 		Section.Parent = Parent
-
+		
 		local function UpdateSectionSize(Amount)
 			FinalSize = FinalSize + (Amount + 5)
 			game:GetService("TweenService"):Create(Section, TweenInfo.new(0.2), {Size = UDim2.new(0, 220, 0, FinalSize)}):Play()
@@ -375,7 +375,7 @@ function Library:NewTab(Text)
 			Section.Size = UDim2.new(0, 220, 0, FinalSize)
 			Features.Size = UDim2.new(0, 220, 0, FinalSize)
 		end
-
+		
 		local function RemoveSectionSize(Amount)
 			FinalSize = FinalSize - (Amount + 5)
 			game:GetService("TweenService"):Create(Section, TweenInfo.new(0.2), {Size = UDim2.new(0, 220, 0, FinalSize)}):Play()
@@ -383,9 +383,9 @@ function Library:NewTab(Text)
 			Section.Size = UDim2.new(0, 220, 0, FinalSize)
 			Features.Size = UDim2.new(0, 220, 0, FinalSize)
 		end
-
+		
 		local i1 = {}
-
+		
 		function i1:NewButton(Text, Callback)
 			UpdateSectionSize(15)
 			Text = Text or "Text"
@@ -417,7 +417,7 @@ function Library:NewTab(Text)
 				game:GetService("TweenService"):Create(Button, TweenInfo.new(0.1), {BackgroundColor3 = Color3.fromRGB(35, 35, 35)}):Play()
 			end)
 		end
-
+		
 		function i1:NewToggle(Text, State, Callback)
 			UpdateSectionSize(20)
 			Text = Text or "Text"
@@ -485,7 +485,7 @@ function Library:NewTab(Text)
 				Callback(Toggled)
 			end)
 		end
-
+		
 		function i1:NewSlider(Text, minvalue, maxvalue, defvalue, Callback)
 			UpdateSectionSize(20)
 			Text = Text or "Text"
@@ -552,7 +552,7 @@ function Library:NewTab(Text)
 				end        
 			end)
 		end
-
+		
 		function i1:NewDropdown(Text_1, Options, Callback)
 			UpdateSectionSize(20)
 			Text_1 = Text_1 or ""
@@ -648,7 +648,7 @@ function Library:NewTab(Text)
 				end
 			end)
 		end
-
+		
 		function i1:CreateESPPreview()
 			UpdateSectionSize(320)
 			Features:FindFirstChildOfClass("UIPadding"):Destroy()
@@ -897,7 +897,7 @@ function Library:NewTab(Text)
 
 			return InsidePreview
 		end
-
+		
 		return i1
 	end
 
