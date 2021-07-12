@@ -19,13 +19,13 @@ local ESP = {
 	Circle = false,
 	Radius = 100,
 	Snaplines = false,
-	Boxes = false,
+	Boxes = true,
 	Chams = false,
 	Names = false,
 	Health = false,
 	Distance = false,
 	Items = false,
-	TeamCheck = false,
+	TeamCheck = true,
 	ColorBasedOnTeam = false
 }
 
@@ -175,7 +175,32 @@ function Boxes(Player)
 				local Character = GetCharacter(Player)	
 				local Corners = GetCorners(Player)
 
-				if Character and Character:FindFirstChild("HumanoidRootPart") and Character:FindFirstChild("Head") then
+				if Character and Character:FindFirstChild("HumanoidRootPart") and Character:FindFirstChild("Head") and ESP.TeamCheck and Player.Team ~= LocalPlayer.Team  then
+					if ESP.ColorBasedOnTeam and Player.Team ~= LocalPlayer.Team then
+						Box.Color = Color3.fromRGB(127, 94, 235)
+					else
+						Box.Color = Color3.fromRGB(235, 235, 235)
+					end
+
+					local p1, Vis = CurrentCamera:WorldToViewportPoint((Character:FindFirstChild("HumanoidRootPart").CFrame).p)
+
+					local X, Y = Corners.BottomRight.X - Corners.TopLeft.X, Corners.BottomRight.Y - Corners.TopLeft.Y
+
+					Box.Visible = Vis
+					BoxOutline.Visible = Vis
+
+					Box.Visible = true
+					Box.Size = Vector2.new(X, Y)
+					Box.Position = Corners.TopLeft
+					Box.Thickness = 1
+					Box.Filled = false
+
+					BoxOutline.Visible = true
+					BoxOutline.Size = Vector2.new(Corners.BottomRight.X - Corners.TopLeft.X, Corners.BottomRight.Y - Corners.TopLeft.Y)
+					BoxOutline.Position = Corners.TopLeft
+					BoxOutline.Thickness = (Box.Thickness * 2.5)
+					BoxOutline.Filled = false
+				elseif Character and Character:FindFirstChild("HumanoidRootPart") and Character:FindFirstChild("Head") and not ESP.TeamCheck then
 					if ESP.ColorBasedOnTeam and Player.Team ~= LocalPlayer.Team then
 						Box.Color = Color3.fromRGB(127, 94, 235)
 					else
@@ -247,9 +272,26 @@ function Names(Player)
 		if IsPlayerAlive(Player) then
 			if Player then 
 				local Character = GetCharacter(Player)	
-				if Character and Character:FindFirstChild("HumanoidRootPart") and Character:FindFirstChild("Head") then
+				if Character and Character:FindFirstChild("HumanoidRootPart") and Character:FindFirstChild("Head") and ESP.TeamCheck and Player.Team ~= LocalPlayer.Team  then
 
 					if ESP.ColorBasedOnTeam and Player.Team ~= LocalPlayer.Team then
+						NameText.Color = Color3.fromRGB(127, 94, 235)
+					else
+						NameText.Color = Color3.fromRGB(235, 235, 235)
+					end
+
+					local Pos, Vis = CurrentCamera:WorldToViewportPoint((Character:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, Character:FindFirstChild("HumanoidRootPart").Size.Y, 0)).p)
+
+					NameText.Visible = Vis and ESP.Names
+					HealthText.Visible = Vis and ESP.Health
+					NameText.Text = NameText.Text
+					HealthText.Text = "[" .. GetHealth(Player) .. "]"
+
+					NameText.Position = Vector2.new(Pos.X, Pos.Y - 15)
+					HealthText.Position = Vector2.new(NameText.Position.X, NameText.Position.Y - 18)
+				elseif Character and Character:FindFirstChild("HumanoidRootPart") and Character:FindFirstChild("Head") and not ESP.TeamCheck then
+				    
+				    if ESP.ColorBasedOnTeam and Player.Team ~= LocalPlayer.Team then
 						NameText.Color = Color3.fromRGB(127, 94, 235)
 					else
 						NameText.Color = Color3.fromRGB(235, 235, 235)
