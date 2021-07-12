@@ -356,13 +356,21 @@ elseif (game.PlaceId == 292439477) then
 end
 
 for i, v in next, Players:GetPlayers() do
-	if v ~= LocalPlayer then
+	if v ~= LocalPlayer and ESP.TeamCheck and v.Team ~= LocalPlayer.Team then
+		Names(v)
+		Boxes(v)
+	elseif v ~= LocalPlayer and not ESP.TeamCheck then
 		Names(v)
 		Boxes(v)
 	end
 end
 Players.PlayerAdded:Connect(function(v)
-	Names(v)
-	Boxes(v)
+	if v ~= LocalPlayer and ESP.TeamCheck and v.Team ~= LocalPlayer.Team then
+		Names(v)
+		Boxes(v)
+	elseif v ~= LocalPlayer and not ESP.TeamCheck then
+		Names(v)
+		Boxes(v)
+	end
 end)
 return Aimbot, ESP, FOV ;
