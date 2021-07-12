@@ -1,4 +1,4 @@
-local Location = game.Players.LocalPlayer.PlayerGui
+local Location = game.CoreGui
 
 local Camera = workspace.CurrentCamera
 
