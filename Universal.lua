@@ -407,12 +407,7 @@ for i, v in next, Players:GetPlayers() do
 	end
 end
 Players.PlayerAdded:Connect(function(v)
-	if v ~= LocalPlayer and ESP.TeamCheck and v.Team ~= LocalPlayer.Team then
-		Names(v)
-		Boxes(v)
-	elseif v ~= LocalPlayer and not ESP.TeamCheck then
-		Names(v)
-		Boxes(v)
-	end
+	Names(v)
+	Boxes(v)
 end)
 return Aimbot, ESP, FOV ;
