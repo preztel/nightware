@@ -177,7 +177,7 @@ function Boxes(Player)
 				local Character = GetCharacter(Player)	
 				local Corners = GetCorners(Player)
 
-				if Character and Character:FindFirstChild("HumanoidRootPart") and Character:FindFirstChild("Head") and ESP.TeamCheck and Player.Team ~= LocalPlayer.Team  then
+				if Character and Character:FindFirstChild("HumanoidRootPart") and Character:FindFirstChild("Head")  then
 					if ESP.ColorBasedOnTeam and Player.Team ~= LocalPlayer.Team then
 						Box.Color = ESP.EnemyColor
 					else
@@ -202,7 +202,7 @@ function Boxes(Player)
 					BoxOutline.Position = Corners.TopLeft
 					BoxOutline.Thickness = (Box.Thickness * 2.5)
 					BoxOutline.Filled = false
-				elseif Character and Character:FindFirstChild("HumanoidRootPart") and Character:FindFirstChild("Head") and not ESP.TeamCheck then
+				elseif Character and Character:FindFirstChild("HumanoidRootPart") and Character:FindFirstChild("Head") then
 					if ESP.ColorBasedOnTeam and Player.Team ~= LocalPlayer.Team then
 						Box.Color = Color3.fromRGB(127, 94, 235)
 					else
