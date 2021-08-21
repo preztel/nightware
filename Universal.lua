@@ -26,7 +26,9 @@ local ESP = {
 	Distance = false,
 	Items = false,
 	TeamCheck = true,
-	ColorBasedOnTeam = false
+	ColorBasedOnTeam = false,
+	TeamColor = Color3.fromRGB(235, 235, 235),
+	EnemyColor = Color3.fromRGB(255, 0, 0)
 }
 
 --< Local Variables.
@@ -177,9 +179,9 @@ function Boxes(Player)
 
 				if Character and Character:FindFirstChild("HumanoidRootPart") and Character:FindFirstChild("Head") and ESP.TeamCheck and Player.Team ~= LocalPlayer.Team  then
 					if ESP.ColorBasedOnTeam and Player.Team ~= LocalPlayer.Team then
-						Box.Color = Color3.fromRGB(127, 94, 235)
+						Box.Color = ESP.EnemyColor
 					else
-						Box.Color = Color3.fromRGB(235, 235, 235)
+						Box.Color = ESP.TeamColor
 					end
 
 					local p1, Vis = CurrentCamera:WorldToViewportPoint((Character:FindFirstChild("HumanoidRootPart").CFrame).p)
